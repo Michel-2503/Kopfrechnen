@@ -17,11 +17,12 @@
   }
 }
 </script>
-<link rel="stylesheet" href="/index.css">
+  <!-- Hinzufügen von Babel, um JSX im Browser zu kompilieren -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="index.tsx"></script>
-  <script type="module" src="/index.tsx"></script>
-</body>
+    <!-- Ändern des Skript-Typs auf "text/babel", damit Babel es verarbeiten kann -->
+    <script type="text/babel" data-type="module" src="index.tsx"></script>
+  </body>
 </html>
