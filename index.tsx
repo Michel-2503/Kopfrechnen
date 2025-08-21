@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { createRoot } from 'react-dom/client';
+import ReactDOM from 'react-dom/client';
 
 const TOTAL_QUESTIONS_PER_LEVEL = 10;
 const MAX_LEVELS = 4; // Increased to 4 levels
@@ -25,7 +25,7 @@ const INCORRECT_MESSAGES = [
 
 type GameState = 'start' | 'playing' | 'level-cleared' | 'finished' | 'game-over';
 
-const Fireworks: React.FC = () => {
+const Fireworks = () => {
     const numParticles = 100; // Increased for a fuller effect
     const particles = Array.from({ length: numParticles }).map((_, index) => {
         const style = {
@@ -42,7 +42,7 @@ const Fireworks: React.FC = () => {
 };
 
 
-const App: React.FC = () => {
+const App = () => {
     const [gameState, setGameState] = useState<GameState>('start');
     const [level, setLevel] = useState(1);
     const [lives, setLives] = useState(STARTING_LIVES);
@@ -394,6 +394,6 @@ const App: React.FC = () => {
 
 const container = document.getElementById('root');
 if(container){
-    const root = createRoot(container);
+    const root = ReactDOM.createRoot(container);
     root.render(<App />);
 }
