@@ -1,0 +1,248 @@
+:root {
+  --primary-color: #007BFF;
+  --primary-hover-color: #0056b3;
+  --correct-color: #28a745;
+  --incorrect-color: #dc3545;
+  --background-start-color: #6dd5ed;
+  --background-end-color: #2193b0;
+  --card-background-color: #ffffff;
+  --text-color: #333333;
+  --light-text-color: #6c757d;
+  --border-color: #e0e0e0;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, var(--background-start-color), var(--background-end-color));
+  color: var(--text-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  width: 100%;
+  max-width: 1500px;
+  padding: 20px;
+}
+
+.app-container {
+  background-color: var(--card-background-color);
+  border-radius: 16px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+  padding: 32px;
+  text-align: center;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+h1 {
+  color: var(--primary-color);
+  margin-bottom: 8px;
+}
+
+.status-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  color: var(--light-text-color);
+  margin-bottom: 24px;
+  padding: 8px 16px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  font-weight: 600;
+  box-sizing: border-box;
+}
+
+.lives-container {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.heart {
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.problem-area {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 24px 0;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  color: #495057;
+}
+
+.problem-area-equation {
+  font-size: 2.2rem;
+}
+
+.input-area {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+input[type="number"] {
+  flex-grow: 1;
+  padding: 12px 16px;
+  font-size: 1.2rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  text-align: center;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="number"]:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
+
+/* Hides arrows from number input */
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.button {
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+  color: white;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.button:hover {
+  transform: translateY(-2px);
+}
+
+.button:active {
+  transform: translateY(0);
+}
+
+.button-primary {
+  background-color: var(--primary-color);
+}
+
+.button-primary:hover {
+  background-color: var(--primary-hover-color);
+}
+
+.button-primary:disabled {
+  background-color: #a0c7ff;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.feedback-area {
+  min-height: 50px;
+  margin-top: 16px;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.feedback-area p span {
+  display: block;
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--light-text-color);
+  margin-top: 4px;
+}
+
+.feedback-correct {
+  color: var(--correct-color);
+}
+
+.feedback-incorrect {
+  color: var(--incorrect-color);
+}
+
+.final-score {
+  padding: 20px;
+}
+
+.final-score h2 {
+  font-size: 2rem;
+  margin-bottom: 16px;
+}
+
+.final-score p {
+  font-size: 1.5rem;
+  margin-bottom: 24px;
+}
+
+.bonus-life-message {
+    font-size: 1.1rem;
+    color: var(--correct-color);
+    font-weight: 600;
+    margin: -8px 0 16px 0;
+}
+
+.start-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.start-screen h1 {
+    font-size: 2.5rem;
+}
+
+.start-screen p {
+    font-size: 1.1rem;
+    color: var(--light-text-color);
+    max-width: 80%;
+}
+
+/* Fireworks Animation */
+.fireworks-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1px;
+  height: 1px;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.particle {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background-color: hsl(var(--hue), 100%, 70%);
+  border-radius: 50%;
+  opacity: 0;
+  animation: explode var(--duration) var(--delay) ease-out forwards;
+}
+
+@keyframes explode {
+  0% {
+    transform: rotate(var(--angle)) translateY(30px) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(var(--angle)) translateY(var(--radius)) scale(0);
+    opacity: 0;
+  }
+}
